@@ -19,6 +19,7 @@
     },
     "dependencies": {
         "@algolia/autocomplete-js": "^1.11.1",
-        "@algolia/autocomplete-theme-classic": "^1.11.1"
+        "@algolia/autocomplete-theme-classic": "^1.11.1",
+        "@meilisearch/autocomplete-client": "^0.2.1"
     }
 }

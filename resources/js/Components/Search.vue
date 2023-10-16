@@ -1,6 +1,12 @@
 <script setup>
 import { autocomplete } from '@algolia/autocomplete-js'
 import { onMounted } from 'vue'
+import { meilisearchAutocompleteClient, getMeilisearchResults } from '@meilisearch/autocomplete-client'
+
+const client = new meilisearchAutocompleteClient({
+    url: 'http://localhost:7700',
+    apiKey: 'masterKey'
+})
 
 onMounted(() => {
     autocomplete({
@@ -12,16 +18,24 @@ onMounted(() => {
                 {
                     sourceId: 'users',
                     getItems ({ query }) {
-                        const items = [
-                            { id: 1, name: 'Alex' },
-                            { id: 2, name: 'Mabel' },
-                        ]
-
-                        return items.filter(({ name }) => name.toLowerCase().includes(query.toLowerCase()))
+                        return getMeilisearchResults({
+                            searchClient: client,
+                            queries: [
+                                {
+                                    indexName: 'users',
+                                    query: query
+                                }
+                            ]
+                        })
                     },
                     templates: {
-                        item ({ item }) {
-                            return item.name
+                        item ({ item, html }) {
+                            return html`
+                                <a href="" class="flex items-center space-x-2">
+                                    <img src="${item.avatar_url}" class="w-8 h-8 rounded-full" />
+                                    <span>${item.name}</span>
+                                </a>
+                            `
                         }
                     }
                 }
