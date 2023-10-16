@@ -16,6 +16,7 @@ class Course extends Model
         return [
             'id' => (int) $this->id,
             'title' => $this->title,
+            'url' => route('courses.show', $this)
         ];
     }
 }

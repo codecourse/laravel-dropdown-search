@@ -55,7 +55,8 @@ class User extends Authenticatable
         return [
             'id' => (int) $this->id,
             'name' => $this->name,
-            'avatar_url' => $this->avatarUrl()
+            'avatar_url' => $this->avatarUrl(),
+            'url' => route('users.show', $this)
         ];
     }
 }
