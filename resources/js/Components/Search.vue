@@ -28,6 +28,9 @@ onMounted(() => {
         placeholder: 'What are you looking for?',
         autoFocus: true,
         openOnFocus: true,
+        initialState: {
+            query: new URL(window.location).searchParams.get('search')
+        },
         plugins: [
             recentSearchesPlugin
         ],
