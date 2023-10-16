@@ -28,6 +28,9 @@ onMounted(() => {
                             ]
                         })
                     },
+                    getItemUrl({ item }) {
+                        return item.url
+                    },
                     templates: {
                         header ({ html }) {
                             return html`
@@ -57,6 +60,9 @@ onMounted(() => {
                                 }
                             ]
                         })
+                    },
+                    getItemUrl({ item }) {
+                        return item.url
                     },
                     templates: {
                         header ({ html }) {
