@@ -28,6 +28,9 @@ onMounted(() => {
         placeholder: 'What are you looking for?',
         autoFocus: true,
         openOnFocus: true,
+        onSubmit ({ navigator, state }) {
+            navigator.navigate({ itemUrl: `/search/?search=${state.query}` })
+        },
         initialState: {
             query: new URL(window.location).searchParams.get('search')
         },

@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Models\Course;
 use App\Models\User;
 use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -48,3 +49,8 @@ Route::get('/courses/{course}', function (Course $course) {
     dd($course);
 })
     ->name('courses.show');
+
+Route::get('/search', function (Request $request) {
+    dd($request->search);
+})
+    ->name('search.index');
